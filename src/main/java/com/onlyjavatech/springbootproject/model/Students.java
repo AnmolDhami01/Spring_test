@@ -2,6 +2,7 @@ package com.onlyjavatech.springbootproject.model;
 
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,20 +27,29 @@ public class Students {
 
 	private String class1;
 	private String age;
+	
 	@CreationTimestamp
-	private Date createdAt;
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime  createdAt;
+	
 
 	public Integer getId() {
 		return id;
 	}
 
-	public Date getCreatedAt() {
+	
+
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+
+
+	public void setCreatedAt(LocalDateTime  createdAt) {
 		this.createdAt = createdAt;
 	}
+
+
 
 	public void setId(Integer id) {
 		this.id = id;

@@ -1,5 +1,6 @@
 package com.onlyjavatech.springbootproject;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.time.LocalDateTime;
 import com.onlyjavatech.springbootproject.ResponseEntity.ResponseWrapper;
 import com.onlyjavatech.springbootproject.ResponseEntity.StatusDescription;
 import com.onlyjavatech.springbootproject.model.Students;
@@ -241,6 +242,7 @@ public class TestController {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	@GetMapping("getStudentsByAge")
 	public ResponseEntity<ResponseWrapper> getAllStudentsByAge(
 			@RequestParam(value = "age", required = true) String age) {
@@ -250,11 +252,22 @@ public class TestController {
 
 			List<Students> findAll = studentRepo.findByAge(age);
 			List<Students> findByAgeAndClass1 = studentRepo.findByAgeAndClass1(age, age);
-			System.out.println(studentRepo.findByCreationDate("2022-02-01"));
+
+			List<Students> findByCreationDate = studentRepo.findByCreationDate("2023-02-27");
+			
+//			Students studentsFiltered = findByCreationDate.stream().filter(e->e.getId()== 48).findFirst().get();
+//			
+//			System.out.println(studentsFiltered);
+
+//			findByCreationDate.forEach(e -> {
+//
+//				System.out.println(e);
+//			});
 
 //			System.out.println(findByAgeAndClass1);
 
 			if (findAll.size() == 0) {
+
 				statusDescription1.setStatusCode(220);
 				statusDescription1.setStatusDescription("No Data Found");
 				responseWrapper1.setStatusDescriptions(statusDescription1);
