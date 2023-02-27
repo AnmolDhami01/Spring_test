@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onlyjavatech.springbootproject.RequestWrapper.BookRequestWrapper;
 import com.onlyjavatech.springbootproject.ResponseEntity.ResponseWrapper;
 import com.onlyjavatech.springbootproject.ResponseEntity.StatusDescription;
 import com.onlyjavatech.springbootproject.model.BooksModel;
@@ -51,6 +52,17 @@ public class BookController {
 			return new ResponseEntity<>(responseWrapper1, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(responseWrapper1, HttpStatus.OK);
+	}
+
+	@PostMapping("addBookWtihAutohourId")
+	public ResponseEntity<ResponseWrapper> addBookWtihAutohourId(@RequestBody BookRequestWrapper boook) {
+		ResponseWrapper responseWrapper1 = new ResponseWrapper();
+		StatusDescription statusDescription1 = new StatusDescription();
+
+		responseWrapper1.setStatusDescriptions(statusDescription1);
+		responseWrapper1 = this.bookservice.addBookWtihAutohourId(boook);
+
+		return new ResponseEntity<>(responseWrapper1, responseWrapper1.getHttpStatus());
 	}
 
 }

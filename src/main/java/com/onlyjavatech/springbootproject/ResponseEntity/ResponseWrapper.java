@@ -3,7 +3,10 @@ package com.onlyjavatech.springbootproject.ResponseEntity;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.onlyjavatech.springbootproject.model.AuthourModel;
 import com.onlyjavatech.springbootproject.model.BooksModel;
 import com.onlyjavatech.springbootproject.model.Students;
 
@@ -20,9 +23,28 @@ public class ResponseWrapper implements Serializable {
 	List<Students> studentts;
 	List<BooksModel> bookss;
 	BooksModel bookk;
+	AuthourModel authourmodel;
+	
+	HttpStatus httpStatus;
 
 	public BooksModel getBookk() {
 		return bookk;
+	}
+
+	public HttpStatus getHttpStatus() {
+		return httpStatus;
+	}
+
+	public void setHttpStatus(HttpStatus httpStatus) {
+		this.httpStatus = httpStatus;
+	}
+
+	public AuthourModel getAuthourmodel() {
+		return authourmodel;
+	}
+
+	public void setAuthourmodel(AuthourModel authourmodel) {
+		this.authourmodel = authourmodel;
 	}
 
 	public void setBookk(BooksModel bookk) {
