@@ -1,4 +1,5 @@
 package com.onlyjavatech.springbootproject.ResponseEntity;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,14 +13,10 @@ public class ResponseWrapper implements Serializable {
 	/**
 	 * 
 	 */
-	
-	
-	
+
 	StatusDescription statusDescriptions;
 	Students studentt;
 	List<Students> studentts;
-	
-	
 
 	@Override
 	public String toString() {
@@ -56,6 +53,5 @@ public class ResponseWrapper implements Serializable {
 	public void setStatusDescriptions(StatusDescription statusDescriptions) {
 		this.statusDescriptions = statusDescriptions;
 	}
-	
 
 }

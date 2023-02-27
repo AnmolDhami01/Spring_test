@@ -22,7 +22,7 @@ import com.onlyjavatech.springbootproject.model.Students;
 import com.onlyjavatech.springbootproject.model.repo.StudentRepo;
 
 @RestController
-//@ResponseBody
+// @ResponseBody
 @RequestMapping("student/v1/")
 @CrossOrigin(value = "*")
 public class TestController {
@@ -92,7 +92,7 @@ public class TestController {
 			System.out.println(str.getStudentts());
 
 			this.studentRepo.saveAll(str.getStudentts());
-//			responseWrapper1.setStudentts(studentts);
+			// responseWrapper1.setStudentts(studentts);
 			statusDescription1.setStatusCode(200);
 			statusDescription1.setStatusDescription("Success");
 			responseWrapper1.setStatusDescriptions(statusDescription1);
@@ -210,13 +210,12 @@ public class TestController {
 		}
 	}
 
-	
 	@GetMapping("deleteStudentById")
 	public ResponseEntity<ResponseWrapper> deleteStudent(
 			@RequestParam(value = "userId", required = true) Integer userId) {
 		ResponseWrapper responseWrapper1 = new ResponseWrapper();
 		StatusDescription statusDescription1 = new StatusDescription();
-		
+
 		try {
 
 			Optional<Students> foundUser = studentRepo.findById(userId);
@@ -241,14 +240,19 @@ public class TestController {
 		}
 
 	}
-	
+
 	@GetMapping("getStudentsByAge")
-	public ResponseEntity<ResponseWrapper> getAllStudentsByAge(@RequestParam(value = "age", required = true) String age) {
+	public ResponseEntity<ResponseWrapper> getAllStudentsByAge(
+			@RequestParam(value = "age", required = true) String age) {
 		ResponseWrapper responseWrapper1 = new ResponseWrapper();
 		StatusDescription statusDescription1 = new StatusDescription();
 		try {
 
 			List<Students> findAll = studentRepo.findByAge(age);
+			List<Students> findByAgeAndClass1 = studentRepo.findByAgeAndClass1(age, age);
+			System.out.println(studentRepo.findByCreationDate("2022-02-01"));
+
+//			System.out.println(findByAgeAndClass1);
 
 			if (findAll.size() == 0) {
 				statusDescription1.setStatusCode(220);
@@ -271,5 +275,4 @@ public class TestController {
 
 	}
 
-	
 }

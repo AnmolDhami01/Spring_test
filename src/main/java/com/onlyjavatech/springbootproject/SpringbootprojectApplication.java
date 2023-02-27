@@ -11,20 +11,21 @@ import com.onlyjavatech.springbootproject.model.repo.UserRepo;
 public class SpringbootprojectApplication {
 
 	public static void main(String[] args) {
-	 SpringApplication.run(SpringbootprojectApplication.class, args);
-//		ConfigurableApplicationContext run = SpringApplication.run(SpringbootprojectApplication.class, args);
-//
-//		UserRepo bean1 = run.getBean(UserRepo.class);
-//
-//		User userr = new User();
-//
-//		userr.setCity("Delhi");
-//		userr.setName("Shyam");
-//		userr.setStatus("new Status");
-//
-//		User saveUser = bean1.save(userr);
-//
-//		System.out.println("-----" + saveUser);
+		SpringApplication.run(SpringbootprojectApplication.class, args);
+		// ConfigurableApplicationContext run =
+		// SpringApplication.run(SpringbootprojectApplication.class, args);
+		//
+		// UserRepo bean1 = run.getBean(UserRepo.class);
+		//
+		// User userr = new User();
+		//
+		// userr.setCity("Delhi");
+		// userr.setName("Shyam");
+		// userr.setStatus("new Status");
+		//
+		// User saveUser = bean1.save(userr);
+		//
+		// System.out.println("-----" + saveUser);
 	}
 
 }
