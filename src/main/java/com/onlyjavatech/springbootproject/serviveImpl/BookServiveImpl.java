@@ -90,7 +90,7 @@ public class BookServiveImpl implements BookService {
 		ResponseWrapper responseWrapper1 = new ResponseWrapper();
 		StatusDescription statusDescription1 = new StatusDescription();
 		BooksModel booksModel = new BooksModel();
-		System.out.println(boook);
+		
 		try {
 
 			if ((boook.getName() == "" && boook.getName() == null)

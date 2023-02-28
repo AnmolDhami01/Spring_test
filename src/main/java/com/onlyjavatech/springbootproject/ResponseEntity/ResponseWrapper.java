@@ -24,6 +24,15 @@ public class ResponseWrapper implements Serializable {
 	List<BooksModel> bookss;
 	BooksModel bookk;
 	AuthourModel authourmodel;
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	String filePath;
 	
 	HttpStatus httpStatus;
 
@@ -59,14 +68,7 @@ public class ResponseWrapper implements Serializable {
 		this.bookss = bookss;
 	}
 
-	@Override
-	public String toString() {
-		final int maxLen = 10;
-		return "ResponseWrapper [statusDescriptions=" + statusDescriptions + ", studentt=" + studentt + ", studentts="
-				+ (studentts != null ? studentts.subList(0, Math.min(studentts.size(), maxLen)) : null) + ", bookss="
-				+ (bookss != null ? bookss.subList(0, Math.min(bookss.size(), maxLen)) : null) + ", bookk=" + bookk
-				+ "]";
-	}
+	
 
 	public List<Students> getStudentts() {
 		return studentts;
@@ -74,6 +76,15 @@ public class ResponseWrapper implements Serializable {
 
 	public void setStudentts(List<Students> studentts) {
 		this.studentts = studentts;
+	}
+
+	@Override
+	public String toString() {
+		final int maxLen = 10;
+		return "ResponseWrapper [statusDescriptions=" + statusDescriptions + ", studentt=" + studentt + ", studentts="
+				+ (studentts != null ? studentts.subList(0, Math.min(studentts.size(), maxLen)) : null) + ", bookss="
+				+ (bookss != null ? bookss.subList(0, Math.min(bookss.size(), maxLen)) : null) + ", bookk=" + bookk
+				+ ", authourmodel=" + authourmodel + ", filePath=" + filePath + ", httpStatus=" + httpStatus + "]";
 	}
 
 	public Students getStudentt() {

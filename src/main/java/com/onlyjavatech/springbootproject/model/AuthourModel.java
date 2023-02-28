@@ -1,9 +1,12 @@
 package com.onlyjavatech.springbootproject.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +19,18 @@ public class AuthourModel {
 	private String firstName;
 	private String lastName;
 	private String laungauge;
+	
+	@OneToOne(mappedBy = "author")
+	@JsonBackReference
+	private BooksModel book;
+
+	public BooksModel getBook() {
+		return book;
+	}
+
+	public void setBook(BooksModel book) {
+		this.book = book;
+	}
 
 	public int getAuthourId() {
 		return authourId;
