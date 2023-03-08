@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.onlyjavatech.springbootproject.RequestWrapper.BookRequestWrapper;
 import com.onlyjavatech.springbootproject.ResponseEntity.ResponseWrapper;
 import com.onlyjavatech.springbootproject.ResponseEntity.StatusDescription;
+import com.onlyjavatech.springbootproject.helpers.ExcelDownloadHelper;
 import com.onlyjavatech.springbootproject.model.BooksModel;
 import com.onlyjavatech.springbootproject.model.Students;
 import com.onlyjavatech.springbootproject.servives.BookService;
@@ -49,6 +52,16 @@ public class ExcelDownloadController {
 
 		return body;
 
+	}
+
+	@PostMapping("ExcelBulkBooksUpload")
+	public ResponseEntity<ResponseWrapper> uploadExcel(@RequestParam("file") MultipartFile file) {
+
+		ResponseWrapper responseWrapper1 = new ResponseWrapper();
+		StatusDescription statusDescription1 = new StatusDescription();
+		responseWrapper1.setStatusDescriptions(statusDescription1);
+		responseWrapper1 = this.excelDownloadService.saveExcel(file);
+		return new ResponseEntity<>(responseWrapper1, HttpStatus.OK);
 	}
 
 }

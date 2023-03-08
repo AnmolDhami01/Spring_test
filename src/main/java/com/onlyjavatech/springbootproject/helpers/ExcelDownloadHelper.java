@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -66,7 +67,7 @@ public class ExcelDownloadHelper {
 	public static boolean checkExcelFormat(MultipartFile file) {
 		try {
 			String contentType = file.getContentType();
-			if (contentType == "appication/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+			if (contentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
 				return true;
 			} else {
 				return false;
@@ -77,9 +78,8 @@ public class ExcelDownloadHelper {
 	}
 
 	public static List<BooksModel> convertExcelToListOfBooks(InputStream is) {
+		List<BooksModel> arrayList = new ArrayList<>();
 		try {
-
-			List<BooksModel> arrayList = new ArrayList<>();
 
 			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(is);
 
@@ -88,8 +88,6 @@ public class ExcelDownloadHelper {
 			int rowNumber = 0;
 
 			Iterator<Row> iterator = sheet.iterator();
-
-			BooksModel booksModel = new BooksModel();
 
 			while (iterator.hasNext()) {
 				Row row = iterator.next();
@@ -103,15 +101,17 @@ public class ExcelDownloadHelper {
 
 				int cid = 0;
 
+				BooksModel booksModel = new BooksModel();
 				while (cells.hasNext()) {
 					Cell cell = cells.next();
+					System.out.println(cid + cell.getStringCellValue());
 
 					switch (cid) {
-					case 1: {
+					case 0: {
 
 						booksModel.setName(cell.getStringCellValue());
 					}
-					case 2: {
+					case 1: {
 
 						booksModel.setGenre(cell.getStringCellValue());
 					}
@@ -122,12 +122,14 @@ public class ExcelDownloadHelper {
 					cid++;
 				}
 				arrayList.add(booksModel);
+				System.out.println(booksModel + "--" + arrayList);
 			}
 
-			return arrayList;
+			System.out.println(arrayList + "" + arrayList.size());
 
 		} catch (Exception e) {
 			return null;
 		}
+		return arrayList;
 	}
 }

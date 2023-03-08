@@ -17,7 +17,6 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.Fetch;
 
-
 @Entity
 @Table(name = "books")
 public class BooksModel {
@@ -32,10 +31,10 @@ public class BooksModel {
 	@Fetch(FetchMode.JOIN)
 	@JsonManagedReference
 	private AuthourModel author;
-	
+
 	@CreationTimestamp
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime  createdAt;
+	@Column(name = "created_at", updatable = false)
+	private LocalDateTime createdAt;
 
 	public Integer getId() {
 		return id;
@@ -69,8 +68,6 @@ public class BooksModel {
 		this.genre = genre;
 	}
 
-	
-
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -78,7 +75,11 @@ public class BooksModel {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-	
 
-	
+	@Override
+	public String toString() {
+		return "BooksModel [id=" + id + ", name=" + name + ", genre=" + genre + ", author=" + author + ", createdAt="
+				+ createdAt + "]";
+	}
+
 }
